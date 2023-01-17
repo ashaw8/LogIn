@@ -1,5 +1,6 @@
 import sqlite3
-
+#Create UserLogin database to store username/passwords
+#Comes with test example users: username123 and admin123
 connection = sqlite3.connect("UserLogin.db")
 cursor = connection.cursor()
 cursor.execute("CREATE TABLE IF NOT EXISTS users(username VARCHAR, password VARCHAR)")
