@@ -5,6 +5,7 @@
 """
 import bcrypt
 import sqlite3
+import customtkinter
 #Connect to database created in createDB.py script
 connection = sqlite3.connect("UserLogin.db")
 cursor = connection.cursor()
@@ -18,7 +19,7 @@ def validate_credentials(username, password):
     
     #Need to convert str query to bytes before checkpw
     queryUSER = resUSER.fetchall()
-    
+  
     if len(queryUSER) == 0: #Dont continue if no results from Database
         print("Not a valid username/password")
         return
@@ -29,7 +30,7 @@ def validate_credentials(username, password):
 
     elif type(queryPW[0][0]) == bytes:
         queryPW = queryPW[0][0]
-        
+  
     #Check username and password hash match eachother
     if queryUSER[0][0] == username and bcrypt.checkpw(password, queryPW) == True: 
             #direct to any other piece of content here if user is valid in database
@@ -77,4 +78,5 @@ def main():
             add_users(DUN, pw)
 
 
-main()
+#main()
+
